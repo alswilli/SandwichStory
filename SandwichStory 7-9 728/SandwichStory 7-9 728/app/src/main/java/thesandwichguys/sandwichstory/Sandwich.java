@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import thesandwichguys.sandwichstory.Ingredients;
 
-/**
- * Created by Matthew Diep on 7/6/2017.
- */
 
+//  [Created by Matthew Diep on 7/6/2017]
+
+//begin [Orginal stuff before Edited on July-9-2017]
 public class Sandwich {
     public ArrayList<Ingredients> ingredientList;
     private String sandwichName;
@@ -55,4 +55,37 @@ public class Sandwich {
     {
         return glutenFree;
     }
+
+    // end [Orginal stuff before Edited on July-9-2017]
+
+
+    // begin [added by Chris Hahn July-9-2017]
+
+    public void setSandwichName(String sandwichName)
+    {
+        this.sandwichName = sandwichName;
+    }
+    public void setMsg(String msg)
+    {
+        this.msg = msg;
+    }
+    public void setIngredientList(ArrayList<Ingredients> ingredients)
+    {
+        this.ingredientList = ingredients;
+    }
+    public void setVegan(Boolean vegan)
+    {
+        this.vegan = vegan;
+    }
+    public void setVegetarian(Boolean vegetarian)
+    {
+        this.vegetarian = vegetarian;
+    }
+    public void setGlutenFree(Boolean glutenFree)
+    {
+        this.glutenFree = glutenFree;
+    }
+    // end [added by Chris Hahn July-9-2017]
+
 }
+

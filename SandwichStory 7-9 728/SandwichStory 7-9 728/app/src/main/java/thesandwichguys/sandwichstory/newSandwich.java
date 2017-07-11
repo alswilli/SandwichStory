@@ -79,8 +79,35 @@ public class newSandwich extends Fragment {
                 }
         );
 
+
+
         return rootView;
     }
+
+    // begin [Edited by David Sewart 10/10/2016]
+    //save drinks to shared preferences as json string
+    public void saveSandwichesAsJSON()
+    {
+        JSONArray jArray = new JSONArray();
+        for(Sandwich savedRecipe : appInfo.savedSandwich)
+        {
+            try
+            {
+                //need to implement sandwichAsJSON
+                jArray.put(savedRecipe.drinkAsJSON);
+            }
+            catch(Exception e)
+            {
+                Log.e(logTag, "Error saving drinks as json: " + e.getStackTrace());
+            }
+        }
+
+        SharedPreferences settings = getSharedPreferences(MYPREFS, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("drinksAsJSON", jArray.toString());
+        editor.commit();
+    }
+// end [Edited by David Sewart 10/10/2016]
 
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
