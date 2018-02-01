@@ -1,0 +1,155 @@
+from google.appengine.ext import ndb
+import json
+
+class BLAHG(ndb.Model):
+	blahthing = ndb.BooleanProperty()
+	blahthing1 = ndb.StringProperty()
+	blahthing2 = ndb.StringProperty()
+
+class CRAP(ndb.Model):
+	c = ndb.BooleanProperty()
+	c1 = ndb.StringProperty()
+	c2 = ndb.StringProperty()
+
+class Ingredient(ndb.Model):
+    qty = ndb.StringProperty()
+    measure = ndb.StringProperty()
+    name = ndb.StringProperty()
+
+class SandwichStore(ndb.Model):
+    name = ndb.StringProperty()
+    ingredients = ndb.JsonProperty()
+    msg = ndb.TextProperty()
+    userCreated = ndb.BooleanProperty()
+    imgId = ndb.IntegerProperty()
+    downloadCount = ndb.IntegerProperty()
+    ingredientsObj = ndb.StructuredProperty(Ingredient, repeated=True)
+
+#returns a list of sandwich recipes given a query
+def get_result_list(qry):
+    res = []
+    for r in qry:
+        res.append(dict(
+            name=r.name,
+            msg=r.msg,
+            ingredients=r.ingredients,
+            imgId=r.imgId,
+            userCreated=r.userCreated,
+            downloads=r.downloadCount,
+        ))
+
+    return response.json(dict(results=res))
+
+#add a recipe to the database
+def add_sandwich():
+    name = request.post_vars.name
+    if name == "":
+        return response.json("bad")
+    msg = request.post_vars.msg
+    ingredients = json.loads(request.post_vars.ingredients)
+    imgId = request.post_vars.imgId
+
+
+    ls = LiquorStorage()
+    for ingredient in ingredients:
+        ls.ingredientsObj.append(Ingredient(qty=ingredient["qty"].encode("utf-8"),
+                                            name=ingredient["name"],
+                                            measure=ingredient["measure"]))
+
+    ls.userCreated = request.vars.userCreated
+    ls.name = name
+    ls.msg = msg
+    ls.ingredients = ingredients
+    ls.imgId = imgId
+    ls.downloadCount = 0
+    ls.put()
+
+    return response.json("okayyyydokayyy")
+
+#returns 15 user recipes
+def get_user_recipes():
+	#qry = SandwichStore.query().fetch()
+    qry = SandwichStore.query(SandwichStore.userCreated == True).fetch() #15 would have got 15 most recent
+    #print(qry)
+    qry = qry[:16] #getting the first 15
+
+    return get_result_list(qry)
+
+def set_blah_test(): #not even calling this
+	blahh = request.vars.userCreated # INITIALIZE NAME NOT BLAHH
+	#userCreated = True
+	name = 'birdy'
+
+	ls = SandwichStore()
+
+	ls.userCreated = blahh
+	ls.name = name
+	ls.put()
+	#print(request.post_vars.blahh)
+
+	return response.json("poopnut")
+
+def set_blah():
+	#blahh = request.vars.name # INITIALIZE NAME NOT BLAHH
+	blahh = True
+	blah1 = 'hi'
+	blah2 = 'david'
+	print(blah1)
+
+	bs = BLAHG()
+
+	bs.blahthing = blahh
+	bs.blahthing1 = blah1
+	bs.blahthing2 = blah2
+	bs.put()
+
+	#print(request.post_vars.blahh)
+
+	return response.json("poopnut")
+
+def set_crapola():
+	#blahh = request.vars.name # INITIALIZE NAME NOT BLAHH
+	crap = True
+	crap1 = 'nah'
+	crap2 = 'yah'
+
+	#cs = CRAP()
+
+	bs = BLAHG()
+
+	bs.blahthing = crap
+	bs.blahthing1 = crap1
+	bs.blahthing2 = crap2
+	bs.put()
+
+	#cs.c = crap
+	#cs.c1 = crap1
+	#cs.c2 = crap2
+	#cs.put()
+
+	#print(request.post_vars.blahh)
+
+	return response.json("hooplah")
+
+def get_blah_list(qry):
+    res = []
+    for r in qry:
+        res.append(dict(
+            blahy=r.blahthing,
+			blahy1=r.blahthing1,
+			blahy2=r.blahthing2,
+        ))
+
+    return response.json(dict(results=res))
+
+def get_blah():
+    qry = BLAHG.query(BLAHG.blahthing == True).fetch()
+	#print(qry)
+    return get_blah_list(qry)
+	#return response.json(qry)
+
+def poop():
+    return response.json(dict(mylist=['alpha', 'beta', 'gamma', 'deltas']))
+
+def get_another_list():
+    return response.json({'mylist': ['gamma', 'iota', 'zeta']})
