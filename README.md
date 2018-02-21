@@ -1,6 +1,6 @@
 # SandwichStory
 
-App made for CMPS 115 Summer 2017 at UCSC.
+Extension of my Liquor Log app concept to Sandwiches. 
 
 Database Code can be found: SandwichStory > web2py_backend > applications > backend > controllers > api.py
 
