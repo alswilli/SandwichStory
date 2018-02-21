@@ -1,6 +1,6 @@
 # SandwichStory
 
-Extension of my Liquor Log app concept to Sandwiches. 
+App made for UCSC CMPS 115 class - Software Engineering 
 
 Database Code can be found: SandwichStory > web2py_backend > applications > backend > controllers > api.py
 
