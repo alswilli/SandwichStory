@@ -1,6 +1,6 @@
 # SandwichStory
-
-App made for UCSC CMPS 115 class - Software Engineering 
+Android app to keep track of recipes for sandwiches you’ve made/you’d like to make!
+App made for UCSC CMPS 115: Software Engineering 
 
 Database Code can be found: SandwichStory > web2py_backend > applications > backend > controllers > api.py
 
