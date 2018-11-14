@@ -3,10 +3,9 @@ Android app to keep track of recipes for sandwiches you’ve made/you’d like t
 App made for UCSC CMPS 115: Software Engineering 
 
 App is composed of 4 basic pages: <br>
-<p align="center">
 ![Alt text](screenshots/Home.png?raw=true "Home Screen")
- </p>
 <br>Home Screen: Displays the user's personal list of recipes they've saved and/or created.
+
 <br>
 ![Alt text](screenshots/Home.png?raw=true "Create Screen")
 <br>Create Screen: Allows the user to name, specify ingredients, upload an image and save a sandwich recipe.
